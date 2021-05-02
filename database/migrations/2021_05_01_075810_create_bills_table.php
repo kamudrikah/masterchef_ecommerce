@@ -19,6 +19,7 @@ class CreateBillsTable extends Migration
             $table->string('bill_id')->unique()->nullable();
             $table->string('status')->default(Bill::STATUS_DRAFT);
             $table->string('user_id');
+            $table->string('amount');
             $table->string('phone');
             $table->string('street_address');
             $table->string('city');

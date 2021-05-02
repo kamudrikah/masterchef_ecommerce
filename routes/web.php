@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\StripeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,11 +19,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', [LandingController::class, 'index'])->name('landing');
+Route::get('/', [LandingController::class, 'index'])->name('home');
 
 Route::prefix('payment')->group(function () {
     Route::post('pay', [PaymentController::class, 'pay'])->name('make_payment');
+    Route::post('checkout', [StripeController::class, 'checkout'])->name('checkout');
 });
+
+// Route::prefix('admin')->group(function () {
+//     Route::resource('user', [UserController::class]);
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
